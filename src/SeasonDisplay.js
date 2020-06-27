@@ -12,7 +12,18 @@ const SeasonDisplay = (props) => {
   const season = getSeason(props.lat, new Date().getMonth());
   console.log(season);
 
-  return <div>Season Display</div>;
+  //helper variable
+  const message =
+    season === 'winter' ? 'It is so cold' : "Let's go to the beach";
+  const icon = season === 'winter' ? 'snowflake' : 'sun';
+
+  return (
+    <div>
+      <i className={`${icon}`} />
+      <h1>{message}</h1>
+      <i className={`${icon}`} />
+    </div>
+  );
 };
 
 export default SeasonDisplay;
