@@ -23,9 +23,7 @@ class App extends React.Component {
       (err) => this.setState({ errorMessage: err.message })
     );
   }
-
-  //reminder render it to return JSX ONLY
-  render() {
+  showContent() {
     if (this.state.errorMessage && !this.state.lat) {
       return <div>Error: {this.state.errorMessage}</div>;
     }
@@ -33,7 +31,12 @@ class App extends React.Component {
     if (!this.state.errorMessage && this.state.lat) {
       return <SeasonDisplay lat={this.state.lat} />;
     }
-    return <Loader text="Please accept location request" />;
+    return <Loader text="Please accept location request" f />;
+  }
+
+  //reminder render it to return JSX ONLY
+  render() {
+    return <div>{this.showContent()}</div>;
   }
 }
 
