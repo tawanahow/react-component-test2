@@ -1,5 +1,16 @@
 import React from 'react';
 
+const seasonConfig = {
+  summer: {
+    message: "Let's go to the beach",
+    iconName: 'sun',
+  },
+  winter: {
+    message: 'It is so cold',
+    iconName: 'snowflake',
+  },
+};
+
 const getSeason = (lat, month) => {
   if (month > 2 && month < 9) {
     return lat > 0 ? 'summer' : 'winter';
@@ -11,17 +22,13 @@ const getSeason = (lat, month) => {
 const SeasonDisplay = (props) => {
   const season = getSeason(props.lat, new Date().getMonth());
   console.log(season);
-
-  //helper variable
-  const message =
-    season === 'winter' ? 'It is so cold' : "Let's go to the beach";
-  const icon = season === 'winter' ? 'snowflake' : 'sun';
+  const { message, iconName } = seasonConfig[season]; //use destructuing - returns object with message and icon name
 
   return (
     <div>
-      <i className={`${icon} icon`} />
+      <i className={`${iconName} icon`} />
       <h1>{message}</h1>
-      <i className={`${icon} icon`} />
+      <i className={`${iconName} icon`} />
     </div>
   );
 };
